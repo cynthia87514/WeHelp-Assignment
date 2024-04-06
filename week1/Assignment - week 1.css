@@ -34,6 +34,7 @@ time, mark, audio, video {
 .myWebsite{
     flex:none;
     font-weight:bold;
+    font-size:20px;
 }
 .navbar2{
     flex:none;
@@ -50,6 +51,7 @@ time, mark, audio, video {
     margin-left:20px;
     margin-right:10px;
     display:block;
+    font-size:20px;
 }
 .headlineBox{
     background-color:#D4E4ED;
@@ -111,18 +113,21 @@ time, mark, audio, video {
     text-align:center;
     flex:none;
     margin-left:10px;
+    font-size:20px;
 }
 .promotion2{
     background-color:#BECBD3;
     text-align:center;
     flex:none;
     margin-left:10px;
+    font-size:20px;
 }
 .promotion3{
     background-color:#BECBD3;
     text-align:center;
     flex:none;
     margin-left:10px;
+    font-size:20px;
 }
 .bigBoxes{
     display:grid;
@@ -266,6 +271,7 @@ time, mark, audio, video {
     flex:none;
     text-align:center;
     width:100%;
+    font-size:20px;
 }
 .star{
     flex:none;
@@ -410,7 +416,7 @@ time, mark, audio, video {
     .item{
         margin-top:10px;
         margin-bottom:10px;
-        font-size:25px;
+        font-size:20px;
         padding:15px;
     }
     .smallBoxes{
@@ -484,5 +490,10 @@ time, mark, audio, video {
     .big10{
         grid-column-start:1;
         grid-column-end:2;
+    }
+}
+@media(max-width:360px){
+    .headline{
+        font-size:30px;
     }
 }
