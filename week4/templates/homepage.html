@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="/static/homepage.css">
+</head>
+<body>
+    <div class="headlineBox">
+        <div class="headline">歡迎光臨，請輸入帳號密碼</div>
+    </div>
+    <div class="signinsystemBox">
+        <div class="signinsystem">登入系統</div>
+    </div>
+    <div class="signinBox">
+        <form action="/signin" method="post">
+            <div class="usernameBox">
+                <label class="usernameLabel">帳號</label>
+                <input type="text" name="username" class="username">
+            </div>
+            <div class="passwordBox">
+                <label class="passwordLabel">密碼</label>
+                <input type="password" name="password" class="password">
+            </div>
+            <div class="checkboxBox">
+                <label class="checkboxLabel">同意條款</label>
+                <input type="checkbox" class="checkbox" id="checkbox">
+            </div>
+            <div class="submitBox">
+                <input type="submit" value="登入" class="submit" id="submit">
+            </div>
+        </form>
+    </div>
+    <script src="/static/homepage.js"></script>
+</body>
+</html>

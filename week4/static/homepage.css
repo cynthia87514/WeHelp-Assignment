@@ -1,0 +1,105 @@
+*{
+    margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font:inherit;
+	vertical-align:baseline;
+}
+.headlineBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    height:180px;
+    background-color:#252d3b;
+}
+.headline{
+    flex:none;
+    text-align:center;
+    font-size:50px;
+    font-weight:bold;
+    color:white;
+}
+.signinsystemBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    margin-top:50px;
+    height:100px;
+}
+.signinsystem{
+    flex:none;
+    text-align:center;
+    font-size:40px;
+    font-weight:bold;
+    color:black;
+}
+.signinBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    height:250px;
+    font-size:40px;
+}
+form{
+    flex:none;
+    display:flex;
+    flex-direction:column;;
+    align-items:center;
+    margin:auto;
+    height:250px;
+}
+input{
+    margin:10px;
+    border:2px solid gray;
+    border-radius:5px;
+}
+.usernameBox{
+    flex:none;
+}
+.usernameLabel{
+    font-size:35px;
+}
+.username{
+    width:350px;
+    height:50px;
+}
+.passwordBox{
+    flex:none;
+}
+.passwordLabel{
+    font-size:35px;
+}
+.password{
+    width:350px;
+    height:50px;
+}
+.checkboxBox{
+    flex:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    margin-top:15px;
+}
+.checkboxLabel{
+    flex:none;
+    font-size:35px;
+}
+.checkbox{
+    flex:none;
+    width:20px;
+    height:20px;
+}
+.submitBox{
+    flex:none;
+    margin-top:15px;
+}
+.submit{
+    width:70px;
+    height:50px;
+    font-size:20px;
+}
