@@ -4,7 +4,7 @@
   ```sql
   CREATE DATABASE `website`;
 - Create a new table named member, in the website database, designed as below:
-  ![](week5/images/task2.jpg)
+  ![](https://github.com/cynthia87514/WeHelp-Assignment/blob/c5ed449733aaa9d38988d7ef75b6c6611f9c62d8/week5/images/task2.jpg)
   ```sql
   USE `website`;
   CREATE TABLE `member`(
@@ -16,6 +16,7 @@
     time DATETIME NOT NULL DEFAULT CURRENT TIMESTAMP
   );
   ```
+  ![Executing Result of Task2]()
 ### Task3: SQL CRUD
 - INSERT a new row to the member table where name, username and password must be set to test. INSERT additional 4 rows with arbitrary data.
   ```sql
