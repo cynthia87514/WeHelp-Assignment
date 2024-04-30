@@ -4,7 +4,7 @@
   ```sql
   CREATE DATABASE `website`;
 - Create a new table named member, in the website database, designed as below:
-  ![]()
+  ![](week5/images/task2.jpg)
   ```sql
   USE `website`;
   CREATE TABLE `member`(
