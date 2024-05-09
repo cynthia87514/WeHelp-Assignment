@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>Success Page</title>
+    <link rel="stylesheet" type="text/css" href="/static/memberpage.css">
+</head>
+<body>
+    <div class="headlineBox">
+        <div class="headline">歡迎光臨，這是會員頁</div>
+    </div>
+    <div class="signinsystemBox">
+        <div class="signinsystem">{{ member_name }}，歡迎登入系統</div>
+    </div>
+    <div class="signoutBox">
+        <div class="signout" id="signout">登出系統</div>
+    </div>
+    <br>
+    <div style="height:2px; background-color:#D3D3D3;"></div>
+    <br>
+    <div class="messageTitleBox">
+        <div class="messageTitle">快來留言吧</div>
+    </div>
+    <div class="messageBox">
+        <form action="/createMessage" method="post" class="messageForm">
+            <div class="messageLabelBox">
+                <label class="messageLabel">內容</label>
+                <input type="text" name="message" class="message">
+            </div>
+            <div class="submitBox">
+                <input type="submit" value="送出" class="submit" id="submit">
+            </div>
+        </form>
+    </div>
+    <br>
+    <div style="height:2px; background-color:#D3D3D3;"></div>
+    <br>
+    <div class="messagePast">
+        {% for message in messages %}
+            <div class="messageItem">
+                <div class="messageSender">{{ message[0] }}：</div>
+                <div class="messageContent">{{ message[1] }}</div>
+            </div>
+        {% endfor %}
+    </div>
+    <script src="/static/memberpage.js"></script>
+</body>
+</html>
