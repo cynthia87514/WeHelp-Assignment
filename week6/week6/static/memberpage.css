@@ -1,0 +1,146 @@
+*{
+    margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font:inherit;
+	vertical-align:baseline;
+}
+.headlineBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    height:80px;
+    background-color:#252d3b;
+}
+.headline{
+    flex:none;
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+    color:white;
+}
+.signinsystemBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    margin-top:10px;
+    height:60px;
+}
+.signinsystem{
+    flex:none;
+    text-align:center;
+    font-size:25px;
+    color:black;
+}
+.signoutBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+}
+.signout{
+    flex:none;
+    text-align:center;
+    text-decoration:underline;
+    font-size:25px;
+    color:#5B00AE;
+}
+.messageTitleBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    margin-top:10px;
+    height:60px;
+}
+.messageTitle{
+    flex:none;
+    text-align:center;
+    font-size:25px;
+    font-weight:bold;
+    color:black;
+}
+.messageBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    height:130px;
+    font-size:40px;
+}
+.messageForm{
+    flex:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin:auto;
+    height:130px;
+}
+.messageLabelBox{
+    flex:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+}
+.messageLabel{
+    flex:none;
+    font-size:25px;
+}
+.message{
+    flex:none;
+    width:250px;
+    height:40px;
+    margin:10px;
+    border:3px solid black;
+    border-radius:5px;
+    padding:5px;
+    font-size:20px;
+}
+.submitBox{
+    flex:none;
+    margin-bottom:5px;
+}
+.submit{
+    width:60px;
+    height:40px;
+    font-size:15px;
+    margin:10px;
+    border:2px solid gray;
+    border-radius:5px;
+}
+.messagePast{
+    display:flex;
+    flex-direction:column;
+    margin-top:10px;
+}
+.messageItem {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:row;
+    margin:2px;
+}
+.messageSender{
+    flex:none;
+    font-size:25px;
+    font-weight:bold;
+    color:black;
+}
+.messageContent{
+    flex:none;
+    font-size:25px;
+    color:black;
+}
+.cross{
+    flex:none;
+    margin-left:10px;
+    height:30px;
+    width:30px;
+    font-size:25px;
+    border:2px solid gray;
+    border-radius:5px;
+}
