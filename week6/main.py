@@ -17,9 +17,9 @@ con = mysql.connector.connect(
     password="********",
     database="website"
 ) 
+cursor = con.cursor()
 
 async def verify_user(username2: str, password2: str):
-    cursor = con.cursor()
     cursor.execute("SELECT COUNT(*) FROM `member` WHERE username = %s AND password = %s", (username2, password2))
     result = cursor.fetchone()
     return result[0] > 0
@@ -32,8 +32,7 @@ async def home_page(request: Request):
 # Verification Endpoint (sign up)
 @app.post("/signup", response_class=HTMLResponse)
 async def sign_up(request: Request, name: str = Form(None), username: str = Form(None), password: str = Form(None)):
-    cursor = con.cursor()
-    cursor.execute("SELECT * FROM `member` WHERE username = %s", (username,))
+    cursor.execute("SELECT * FROM `member` WHERE username = %s COLLATE utf8mb4_bin;", (username,))
     existing_user = cursor.fetchone()
     if existing_user:
         return RedirectResponse(url="/error?message=帳號已經被註冊", status_code=303)
@@ -47,8 +46,7 @@ async def sign_up(request: Request, name: str = Form(None), username: str = Form
 async def sign_in(request: Request, username2: str = Form(None), password2: str = Form(None)):
     if await verify_user(username2, password2):
         request.session["SIGNED-IN"] = True
-        # 從資料庫中取得會員名稱
-        cursor = con.cursor()
+        # 從資料庫中取得會員id, 名稱
         cursor.execute("SELECT id, name FROM `member` WHERE username = %s AND password = %s", (username2, password2))
         member_data = cursor.fetchone()
         if member_data:
@@ -64,7 +62,6 @@ async def sign_in(request: Request, username2: str = Form(None), password2: str 
 @app.post("/createMessage", response_class=HTMLResponse)
 async def create_message(request: Request, message: str = Form(None)):
     member_id = request.session["member_id"]
-    cursor = con.cursor()
     cursor.execute("INSERT INTO `message` (member_id, content) VALUES (%s, %s)", (member_id, message))
     con.commit()
     return RedirectResponse(url="/member", status_code=303)
@@ -73,7 +70,6 @@ async def create_message(request: Request, message: str = Form(None)):
 @app.post("/deleteMessage", response_class=HTMLResponse)
 async def delete_message(request: Request, message_id: int = Form(...)):
     member_id = request.session["member_id"]
-    cursor = con.cursor()
     cursor.execute("DELETE FROM `message` WHERE id = %s AND member_id = %s", (message_id, member_id))
     con.commit()
     return RedirectResponse(url="/member", status_code=303)
@@ -92,7 +88,6 @@ async def member_page(request: Request):
         return RedirectResponse(url="/", status_code=303)
     member_name = request.session["member_name"]
     member_id = request.session["member_id"]
-    cursor = con.cursor()
     cursor.execute("SELECT `member`.name, `message`.content, `message`.id, `message`.member_id FROM `message` JOIN `member` ON `message`.member_id = `member`.id ORDER BY `message`.time DESC")
     messages = cursor.fetchall()
     return templates.TemplateResponse("memberpage.html", {"request": request, "member_name": member_name, "messages": messages, "member_id": member_id})
