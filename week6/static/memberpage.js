@@ -14,3 +14,15 @@ document.querySelector(".messageForm").addEventListener("submit", function(event
         return;
     }
 });
+
+// 確定是否要刪除留言
+document.addEventListener("DOMContentLoaded", function(){
+    var deleteForms = document.querySelectorAll(".deleteForm");
+    deleteForms.forEach(function(form){
+        form.addEventListener("submit", function(event){
+            if (!confirm("確定要刪除嗎？")){
+                event.preventDefault();
+            }
+        });
+    });
+});

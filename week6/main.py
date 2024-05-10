@@ -49,12 +49,13 @@ async def sign_in(request: Request, username2: str = Form(None), password2: str 
         request.session["SIGNED-IN"] = True
         # 從資料庫中取得會員名稱
         cursor = con.cursor()
-        cursor.execute("SELECT name FROM `member` WHERE username = %s AND password = %s", (username2, password2))
+        cursor.execute("SELECT id, name FROM `member` WHERE username = %s AND password = %s", (username2, password2))
         member_data = cursor.fetchone()
         if member_data:
-            member_name = member_data[0]
-            # 將會員名稱儲存在 Session 中
-            request.session["member_name"] = member_name
+            member_id = member_data[0]
+            member_name = member_data[1]
+            # 將會員 id, 名稱儲存在 session 中
+            request.session.update({"member_id": member_id, "member_name": member_name})
         return RedirectResponse(url="/member", status_code=303)
     else:
         return RedirectResponse(url="/error?message=帳號或密碼輸入錯誤", status_code=303)
@@ -62,14 +63,18 @@ async def sign_in(request: Request, username2: str = Form(None), password2: str 
 # Verification Endpoint (create message)
 @app.post("/createMessage", response_class=HTMLResponse)
 async def create_message(request: Request, message: str = Form(None)):
-    # 獲取使用者名稱
-    member_name = request.session.get("member_name")
-    # 根據使用者名稱查詢對應的 id
+    member_id = request.session["member_id"]
     cursor = con.cursor()
-    cursor.execute("SELECT id FROM `member` WHERE name = %s", (member_name,))
-    member_id = cursor.fetchone()
-    # 插入使用者新輸入的 message 到資料庫
-    cursor.execute("INSERT INTO `message` (member_id, content) VALUES (%s, %s)", (member_id[0], message))
+    cursor.execute("INSERT INTO `message` (member_id, content) VALUES (%s, %s)", (member_id, message))
+    con.commit()
+    return RedirectResponse(url="/member", status_code=303)
+
+# Verification Endpoint (delete message)
+@app.post("/deleteMessage", response_class=HTMLResponse)
+async def delete_message(request: Request, message_id: int = Form(...)):
+    member_id = request.session["member_id"]
+    cursor = con.cursor()
+    cursor.execute("DELETE FROM `message` WHERE id = %s AND member_id = %s", (message_id, member_id))
     con.commit()
     return RedirectResponse(url="/member", status_code=303)
 
@@ -85,11 +90,12 @@ async def sign_out(request: Request):
 async def member_page(request: Request):
     if "SIGNED-IN" not in request.session or not request.session["SIGNED-IN"]:
         return RedirectResponse(url="/", status_code=303)
-    member_name = request.session.get("member_name")
+    member_name = request.session["member_name"]
+    member_id = request.session["member_id"]
     cursor = con.cursor()
-    cursor.execute("SELECT `member`.name, `message`.content FROM `message` JOIN `member` ON `message`.member_id = `member`.id ORDER BY `message`.time DESC")
+    cursor.execute("SELECT `member`.name, `message`.content, `message`.id, `message`.member_id FROM `message` JOIN `member` ON `message`.member_id = `member`.id ORDER BY `message`.time DESC")
     messages = cursor.fetchall()
-    return templates.TemplateResponse("memberpage.html", {"request": request, "member_name": member_name, "messages": messages})
+    return templates.TemplateResponse("memberpage.html", {"request": request, "member_name": member_name, "messages": messages, "member_id": member_id})
 
 # Error page
 @app.get("/error", response_class=HTMLResponse)

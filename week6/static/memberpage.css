@@ -135,3 +135,12 @@
     font-size:25px;
     color:black;
 }
+.cross{
+    flex:none;
+    margin-left:10px;
+    height:30px;
+    width:30px;
+    font-size:25px;
+    border:2px solid gray;
+    border-radius:5px;
+}

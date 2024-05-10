@@ -38,6 +38,12 @@
             <div class="messageItem">
                 <div class="messageSender">{{ message[0] }}：</div>
                 <div class="messageContent">{{ message[1] }}</div>
+                {% if message[3] == member_id %}
+                    <form action="/deleteMessage" method="post" class="deleteForm">
+                        <input type="hidden" name="message_id" value="{{ message[2] }}">
+                        <button type="submit" class="cross">X</button>
+                    </form>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
