@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>歡迎光臨</title>
+    <link rel="stylesheet" type="text/css" href="/static/homepage.css">
+</head>
+<body>
+    <div class="headlineBox">
+        <div class="headline">歡迎光臨，請註冊登入系統</div>
+    </div>
+    <div class="systemBox">
+        <div class="system">註冊帳號</div>
+    </div>
+    <div class="signupBox">
+        <form action="/signup" method="post" class="form1">
+            <div class="nameBox">
+                <label class="nameLabel">姓名</label>
+                <input type="text" name="name" class="name">
+            </div>
+            <div class="usernameBox">
+                <label class="usernameLabel">帳號</label>
+                <input type="text" name="username" class="username">
+            </div>
+            <div class="passwordBox">
+                <label class="passwordLabel">密碼</label>
+                <input type="password" name="password" class="password">
+            </div>
+            <div class="submitBox">
+                <input type="submit" value="註冊" class="submit" id="submit">
+            </div>
+        </form>
+    </div>
+    <br>
+    <div style="height:2px; background-color:#D3D3D3;"></div>
+    <br>
+    <div class="systemBox">
+        <div class="system">登入系統</div>
+    </div>
+    <div class="signinBox">
+        <form action="/signin" method="post" class="form2">
+            <div class="username2Box">
+                <label class="username2Label">帳號</label>
+                <input type="text" name="username2" class="username2">
+            </div>
+            <div class="password2Box">
+                <label class="password2Label">密碼</label>
+                <input type="password" name="password2" class="password2">
+            </div>
+            <div class="submit2Box">
+                <input type="submit" value="登入" class="submit2" id="submit2">
+            </div>
+        </form>
+    </div>
+    <script src="/static/homepage.js"></script>
+</body>
+</html>
